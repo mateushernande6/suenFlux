@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "smartMoney.app"
-               BlueprintName = "smartMoney"
-               ReferencedContainer = "container:smartMoney.xcodeproj">
+               BuildableName = "suenFlux.app"
+               BlueprintName = "suenFlux"
+               ReferencedContainer = "container:suenFlux.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "smartMoneyTests.xctest"
-               BlueprintName = "smartMoneyTests"
-               ReferencedContainer = "container:smartMoney.xcodeproj">
+               BuildableName = "suenFluxTests.xctest"
+               BlueprintName = "suenFluxTests"
+               ReferencedContainer = "container:suenFlux.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "smartMoney.app"
-            BlueprintName = "smartMoney"
-            ReferencedContainer = "container:smartMoney.xcodeproj">
+            BuildableName = "suenFlux.app"
+            BlueprintName = "suenFlux"
+            ReferencedContainer = "container:suenFlux.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "smartMoney.app"
-            BlueprintName = "smartMoney"
-            ReferencedContainer = "container:smartMoney.xcodeproj">
+            BuildableName = "suenFlux.app"
+            BlueprintName = "suenFlux"
+            ReferencedContainer = "container:suenFlux.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
