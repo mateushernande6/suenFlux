@@ -4,7 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import RealmContext from './services/Realm';
 
 import {initDB} from './services/Realm';
-import {dropDB} from './services/Categories';
+// import {dropDB} from './services/Categories';
 
 import Main from './pages/Main';
 import NewEntry from './pages/NewEntry';

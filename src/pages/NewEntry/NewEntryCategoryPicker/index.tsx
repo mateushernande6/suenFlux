@@ -10,7 +10,6 @@ import React, {useState, useEffect} from 'react';
 
 import ActionFooter, {
   ActionPrimaryButton,
-  ActionSecondaryButton,
 } from '../../../components/Core/ActionFooter';
 
 import RealmContext from '../../../services/Realm';

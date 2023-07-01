@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 
 import DateTimePickerModal from 'react-native-modal-datetime-picker';

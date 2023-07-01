@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {NavigationProps} from '../../types';
 
 import ActionFooter, {
   ActionPrimaryButton,

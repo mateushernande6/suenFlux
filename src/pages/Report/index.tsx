@@ -13,14 +13,12 @@ import EntryList from '../../components/EntryList';
 import Colors from '../../styles/Colors';
 
 const Report = ({navigation}) => {
-  const balanceValue = 2065.35;
-
   return (
     <View style={styles.container}>
       <BalanceLabel />
 
       <View>
-        <Picker onValueChange={(value, index) => console.log(value)}>
+        <Picker onValueChange={value => console.log(value)}>
           <Picker.Item label="Java" value="java" />
           <Picker.Item label="JavaScript" value="js" />
         </Picker>
