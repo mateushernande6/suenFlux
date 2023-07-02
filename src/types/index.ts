@@ -11,6 +11,6 @@ export type NavigationProps = {
 };
 
 export type BalanceLabelProps = {
-  // currentBalance: string | number;
+  currentBalance: string | number | undefined;
   onNewEntryPress?: any;
 };
