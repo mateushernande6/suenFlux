@@ -9,7 +9,7 @@ import {getEntry} from '../../services/Entries';
 
 import EntryListItem from './EntryListItem';
 
-const EntryList = ({days = 7, onEntryPress, onPressActionButton}) => {
+const EntryList = ({days = 7, category, onEntryPress, onPressActionButton}) => {
   const [entries, setEntries] = useState([]);
 
   const isFocused = useIsFocused();
@@ -19,14 +19,14 @@ const EntryList = ({days = 7, onEntryPress, onPressActionButton}) => {
 
   useEffect(() => {
     async function loadEntries() {
-      const data = await getEntry(realm);
+      const data = await getEntry(realm, days, category);
       setEntries(data);
     }
 
     loadEntries();
 
     console.log('EntryList: UseEffect --');
-  }, [realm, isFocused]);
+  }, [realm, isFocused, days, category]);
 
   return (
     <Container

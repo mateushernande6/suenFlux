@@ -6,6 +6,7 @@ const EntrySummaryList = ({entriesGrouped}: any) => {
     <View style={styles.container}>
       <FlatList
         data={entriesGrouped}
+        scrollEnabled={false}
         renderItem={({item}) => (
           <Text>
             {item.description} - ${item.amount}

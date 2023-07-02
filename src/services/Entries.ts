@@ -1,10 +1,24 @@
 import {Alert} from 'react-native';
 import {getUUID} from './UUID';
 
-export const getEntry = async (realm: any) => {
-  const entries = await realm.objects('Entry').sorted('entryAt', true);
+import dayjs from '../vendors/dayjs';
 
-  console.log('getEntry :: entries - ', entries);
+export const getEntry = async (realm: any, days: any, category: any) => {
+  let getAllEntries = await realm.objects('Entry');
+
+  if (days > 0) {
+    const date = dayjs().subtract(days, 'days').toDate();
+
+    getAllEntries = await getAllEntries.filtered('entryAt >= $0', date);
+  }
+
+  if (category && category.id) {
+    getAllEntries = await getAllEntries.filtered('category == $0', category);
+  }
+
+  const entries = await getAllEntries.sorted('entryAt', true);
+
+  // console.log('getEntry :: entries - ', entries);
 
   return entries;
 };
