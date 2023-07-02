@@ -11,6 +11,11 @@ export type NavigationProps = {
 };
 
 export type BalanceLabelProps = {
-  // currentBalance: string | number;
+  currentBalance: string | number | undefined;
   onNewEntryPress?: any;
+};
+
+export type UseEntriesProps = {
+  days?: number;
+  category?: any;
 };

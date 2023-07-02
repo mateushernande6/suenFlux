@@ -1,32 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
-import {useIsFocused} from '@react-navigation/native';
 
 import Container from '../Core/Container';
 
-import RealmContext from '../../services/Realm';
-import {getEntry} from '../../services/Entries';
-
 import EntryListItem from './EntryListItem';
 
+import useEntries from '../../hooks/useEntries';
+
 const EntryList = ({days = 7, category, onEntryPress, onPressActionButton}) => {
-  const [entries, setEntries] = useState([]);
-
-  const isFocused = useIsFocused();
-
-  const {useRealm} = RealmContext;
-  const realm = useRealm();
-
-  useEffect(() => {
-    async function loadEntries() {
-      const data = await getEntry(realm, days, category);
-      setEntries(data);
-    }
-
-    loadEntries();
-
-    console.log('EntryList: UseEffect --');
-  }, [realm, isFocused, days, category]);
+  const [entries] = useEntries({days, category});
 
   return (
     <Container

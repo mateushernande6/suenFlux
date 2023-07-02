@@ -13,13 +13,14 @@ import NewEntryCategoryPicker from './NewEntryCategoryPicker';
 import NewEntryDatePicker from './NewEntryDatePicker';
 import NewEntryDeleteAction from './NewEntryDeleteAction';
 
-import {saveEntry} from '../../services/Entries';
-import {deleteEntry} from '../../services/Entries';
+import useEntries from '../../hooks/useEntries';
 
 import Colors from '../../styles/Colors';
 
 const NewEntry: React.FC = ({route, navigation}: any) => {
   const {entry} = route.params;
+
+  const [, saveEntry, deleteEntry] = useEntries();
 
   const [amount, setAmount] = useState<string>(entry.amount);
   const [debit, setDebit] = useState(entry.amount <= 0);
@@ -49,7 +50,7 @@ const NewEntry: React.FC = ({route, navigation}: any) => {
     };
 
     await saveEntry(realm, data, entry);
-    console.log('Saveamount :: save - ', amount);
+
     onClose();
   };
 

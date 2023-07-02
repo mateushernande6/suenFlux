@@ -6,45 +6,28 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+
+import useCategories from '../../hooks/useCategories';
 
 import ActionFooter, {ActionPrimaryButton} from '../Core/ActionFooter';
-import RealmContext from '../../services/Realm';
-
-import {
-  getAllCategories,
-  getCreditCategories,
-  getDebitCategories,
-} from '../../services/Categories';
 
 import Colors from '../../styles/Colors';
 
 const CategoryModal = ({categoryType, isVisible, onConfirm, onCancel}) => {
-  const [categories, setCategories] = useState([]);
-
-  const {useRealm} = RealmContext;
-  const realm = useRealm();
-
-  useEffect(() => {
-    async function loadCategories() {
-      let data;
-      if (categoryType === 'all') {
-        data = await getAllCategories(realm);
-      } else if (categoryType === 'debit') {
-        data = await getDebitCategories(realm);
-      } else {
-        data = await getCreditCategories(realm);
-      }
-      setCategories(data);
-    }
-    loadCategories();
-  }, [categoryType, realm]);
+  const [debitCategories, creditCategories, allCategories] = useCategories();
 
   return (
     <Modal animationType="slide" transparent={false} visible={isVisible}>
       <View style={styles.modal}>
         <FlatList
-          data={categories}
+          data={
+            categoryType === 'all'
+              ? allCategories
+              : categoryType === 'debit'
+              ? debitCategories
+              : creditCategories
+          }
           keyExtractor={item => item.id}
           renderItem={({item}) => (
             <TouchableOpacity
