@@ -1,10 +1,13 @@
 import {useEffect, useState} from 'react';
 import RealmContext from '../services/Realm';
+import {useIsFocused} from '@react-navigation/native';
 
 import {getBalance} from '../services/Balance';
 
 const useBalance = () => {
   const [balance, setBalance] = useState(0);
+
+  const isFocused = useIsFocused();
 
   const {useRealm} = RealmContext;
   const realm = useRealm();
@@ -21,7 +24,7 @@ const useBalance = () => {
     }
 
     loadBalance();
-  }, [realm]);
+  }, [realm, isFocused]);
 
   return [currency.format(balance)];
 };

@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {useIsFocused} from '@react-navigation/native';
 
 import RealmContext from '../services/Realm';
 
@@ -14,6 +15,8 @@ const useCategories = () => {
   const [creditCategories, setCreditCategories] = useState([]);
   const [allCategories, setAllCategories] = useState([]);
   const [initCategory, setInitCategory] = useState([]);
+
+  const isFocused = useIsFocused();
 
   const {useRealm} = RealmContext;
   const realm = useRealm();
@@ -43,7 +46,7 @@ const useCategories = () => {
     loadCreditCategories();
     loadAllCategories();
     loadInitCategory();
-  }, [realm]);
+  }, [realm, isFocused]);
 
   return [debitCategories, creditCategories, allCategories, initCategory];
 };

@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {useIsFocused} from '@react-navigation/native';
 
 import {UseEntriesProps} from '../types';
 
@@ -8,6 +9,8 @@ import {getEntry, saveEntry, deleteEntry} from '../services/Entries';
 
 const useEntries = ({days = 7, category}: UseEntriesProps = {}) => {
   const [entries, setEntries] = useState<any>([]);
+
+  const isFocused = useIsFocused();
 
   const {useRealm} = RealmContext;
   const realm = useRealm();
@@ -19,7 +22,7 @@ const useEntries = ({days = 7, category}: UseEntriesProps = {}) => {
     };
 
     loadEntries();
-  }, [realm, days, category]);
+  }, [realm, days, category, isFocused]);
 
   return [entries, saveEntry, deleteEntry];
 };
