@@ -14,7 +14,7 @@ export const getBalance = async (realm, untilDays = 0) => {
 };
 
 export const getBalanceSumByDdate = async (realm, days) => {
-  // const startBalance = await getBalance(realm, days);
+  const startBalance = await getBalance(realm, days);
 
   let entries = await realm.objects('Entry');
 
@@ -26,11 +26,16 @@ export const getBalanceSumByDdate = async (realm, days) => {
 
   entries = entries.sorted('entryAt');
 
-  entries = _(entries).groupBy(({entryAt}) =>
-    dayjs(entryAt).format('YYYYMMDD'),
-  );
-
-  console.log(JSON.stringify('teste -> ', entries));
+  entries = _(entries)
+    .groupBy(({entryAt}) => dayjs(entryAt).format('YYYYMMDD'))
+    .map(entry => _.sumBy(entry, 'amount'))
+    .map((amount, index, collection) => {
+      return (
+        (index === 0 ? startBalance : 0) +
+        _.sum(_.slice(collection, 0, index)) +
+        amount
+      );
+    });
 
   return entries;
 };
