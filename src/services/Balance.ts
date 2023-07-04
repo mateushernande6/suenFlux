@@ -70,14 +70,14 @@ export const getBalanceSumByCategory = async (
 
   const othersLimit = 3;
 
-  if (showOther && _.size(entries) >= othersLimit) {
+  if (showOther && _(entries).size() > othersLimit) {
     const data1 = _(entries).slice(0, othersLimit);
     const data2 = [
       {
         category: {
           id: getUUID(),
           name: 'Outros',
-          colors: Colors.metal,
+          color: Colors.magenta,
         },
         amount: _(entries)
           .slice(othersLimit)
