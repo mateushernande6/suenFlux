@@ -32,10 +32,11 @@ const BalancePanel = ({onNewEntryPress}: BalanceLabelProps) => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
-  panel: {
-    paddingVertical: 10,
+  container: {
+    marginBottom: -23,
+    zIndex: 1,
   },
+  panel: {},
   button: {
     backgroundColor: Colors.green,
     borderRadius: 100,
