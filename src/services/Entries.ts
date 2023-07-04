@@ -18,7 +18,7 @@ export const getEntry = async (realm: any, days: any, category: any) => {
 
   const entries = await getAllEntries.sorted('entryAt', true);
 
-  // console.log('getEntry :: entries - ', entries);
+  console.log('getEntry :: entries - ', entries);
 
   return entries;
 };

@@ -19,6 +19,7 @@
     "@realm/react": "^0.5.1",
     "@types/lodash": "^4.14.195",
     "@types/node": "^20.3.3",
+    "@types/react-native-svg-charts": "^5.0.12",
     "@types/react-native-vector-icons": "^6.4.13",
     "@types/uuid": "^9.0.2",
     "bson": "^5.3.0",
