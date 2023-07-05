@@ -42,6 +42,9 @@ const Routes = () => {
               amount: '0.00',
               entryAt: new Date(),
               category: {id: null, name: 'Selecione'},
+              address: null,
+              latitude: null,
+              longitude: null,
             },
           }}
         />
