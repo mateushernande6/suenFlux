@@ -18,7 +18,7 @@ export const getEntry = async (realm: any, days: any, category: any) => {
 
   const entries = await getAllEntries.sorted('entryAt', true);
 
-  console.log('getEntry :: entries - ', entries);
+  // console.log('getEntry :: entries - ', entries);
 
   return entries;
 };
@@ -35,6 +35,9 @@ export const saveEntry = async (realm: any, value: any, entry: any = {}) => {
         description: value.category.name,
         isInit: false,
         category: value.category || entry.category,
+        address: value.address || entry.address,
+        latitude: value.latitude || entry.latitude,
+        longitude: value.longitude || entry.longitude,
       };
 
       realm.create('Entry', data, 'modified');

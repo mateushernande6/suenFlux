@@ -7,6 +7,7 @@ const EntrySummaryList = ({data}: any) => {
   return (
     <FlatList
       style={styles.container}
+      scrollEnabled={false}
       data={data}
       keyExtractor={item => item.category.id}
       renderItem={({item}) => <EntrySummaryListItem entry={item} />}

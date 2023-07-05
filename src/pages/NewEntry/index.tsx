@@ -11,6 +11,7 @@ import BalanceLabel from '../../components/BalanceLabel';
 import NewEntryInput from './NewEntryInput';
 import NewEntryCategoryPicker from './NewEntryCategoryPicker';
 import NewEntryDatePicker from './NewEntryDatePicker';
+import NewEntryAddressPicker from './NewEntryAddressPicker';
 import NewEntryDeleteAction from './NewEntryDeleteAction';
 
 import useEntries from '../../hooks/useEntries';
@@ -26,6 +27,9 @@ const NewEntry: React.FC = ({route, navigation}: any) => {
   const [debit, setDebit] = useState(entry.amount <= 0);
   const [category, setCategory] = useState(entry.category);
   const [entryAt, setEntryAt] = useState(entry.entryAt);
+  const [addressEntry, setAddressEntry] = useState(entry.address);
+  const [latitudeEntry, setLatitudeEntry] = useState(entry.latitude);
+  const [longitudeEntry, setLongitudeEntry] = useState(entry.longitude);
 
   const {useRealm} = RealmContext;
   const realm = useRealm();
@@ -47,7 +51,13 @@ const NewEntry: React.FC = ({route, navigation}: any) => {
       amount: parseFloat(amount),
       category: category,
       entryAt: entryAt,
+      address: addressEntry,
+      latitude: latitudeEntry,
+      longitude: longitudeEntry,
     };
+
+    console.log('Savee data ::', data);
+    console.log('Savee entry ::', entry);
 
     await saveEntry(realm, data, entry);
 
@@ -78,6 +88,16 @@ const NewEntry: React.FC = ({route, navigation}: any) => {
 
         <View style={styles.formActionContainer}>
           <NewEntryDatePicker value={entryAt} onChange={setEntryAt} />
+          <NewEntryAddressPicker
+            address={addressEntry}
+            onChange={({latitude, longitude, address}: any) => {
+              setLatitudeEntry(latitude);
+              setLongitudeEntry(longitude);
+              setAddressEntry(address);
+              console.log('change address', address);
+            }}
+            navigation={navigation}
+          />
           <NewEntryDeleteAction entry={entry} onOkPress={onDelete} />
         </View>
 
